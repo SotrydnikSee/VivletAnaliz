@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
         List<double> Y = new List<double>(); // координаты Y
         double[,] Vector = new double[1, 51]; // Вектор
         double[,] Vivlet = new double[64, 51]; // Вивлет
-
+        object result = null;
         public ObjectTracking(List<double> X, List<double> Y) {
             this.X = X;
             this.Y = Y;
@@ -22,6 +22,12 @@ namespace WindowsFormsApp1
                 // sqrt((XY(i + 1, 1) - XY(i, 1)) ^ 2 + (XY(i + 1, 2) - XY(i, 2)) ^ 2);
             }
 
+            MLApp.MLApp matlab = new MLApp.MLApp();
+            matlab.Execute(@"..\..\sourse");
+            matlab.Feval("myfunc", 1, out result, Vector);
+            var res = (result as object[]).Select(x => (double[,])x).ToArray();
+            object im = res.GetValue(0);
+            Vivlet = (double[,])im;
         }
     }
 }
