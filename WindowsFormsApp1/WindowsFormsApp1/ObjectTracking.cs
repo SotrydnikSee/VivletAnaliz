@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             }
 
             MLApp.MLApp matlab = new MLApp.MLApp();
-            matlab.Execute(@"..\..\sourse");
+            matlab.Execute(@"cd c:\Users\vyrex2\Source\Repos\VivletAnaliz\WindowsFormsApp1\WindowsFormsApp1\sourse");
             matlab.Feval("myfunc", 1, out result, Vector);
             var res = (result as object[]).Select(x => (double[,])x).ToArray();
             object im = res.GetValue(0);
