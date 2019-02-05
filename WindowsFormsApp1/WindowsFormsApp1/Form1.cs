@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Reflection;
 
 namespace WindowsFormsApp1
 {
@@ -24,7 +25,13 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            if (File.Exists("myfunc.m")) { // если файл существует
+                File.Delete("myfunc.m"); // то удаляем его 
+            }
+                StreamWriter myfunc = new StreamWriter("myfunc.m",true); // берем файл функции для записи
+                myfunc.WriteLine("function[W] = myfunc(vector)"); // записываем строчки 
+                myfunc.WriteLine("W=cwt(vector,1:64,'sym2');");// записываем строчки 
+                myfunc.Close();// закрываем файл
             StreamReader f1 = new StreamReader("../../sourse/Машина.txt",true); // подключение файлов с объектами
             int count = -1; // счетчик объектов, счет с нуля, их нет, поэтому -1
             while (!f1.EndOfStream)
