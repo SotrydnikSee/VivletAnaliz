@@ -40,20 +40,20 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.comboBox_obj2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox_obj1_begin = new System.Windows.Forms.ComboBox();
             this.comboBox_obj1 = new System.Windows.Forms.ComboBox();
-            this.comboBox_obj1_end = new System.Windows.Forms.ComboBox();
-            this.comboBox_obj2_begin = new System.Windows.Forms.ComboBox();
-            this.comboBox_obj2_end = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.button_in_PicBox = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.numericUpDown_obj1_start = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_obj1_end = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_obj2_start = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_obj2_end = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTest)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -62,6 +62,10 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_obj1_start)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_obj1_end)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_obj2_start)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_obj2_end)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTest
@@ -164,17 +168,26 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.numericUpDown_obj2_end);
             this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.numericUpDown_obj2_start);
             this.groupBox4.Controls.Add(this.comboBox_obj2);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.comboBox_obj2_end);
-            this.groupBox4.Controls.Add(this.comboBox_obj2_begin);
             this.groupBox4.Location = new System.Drawing.Point(198, 20);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(199, 86);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Объект №2";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(103, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "по";
             // 
             // comboBox_obj2
             // 
@@ -184,13 +197,23 @@
             this.comboBox_obj2.Name = "comboBox_obj2";
             this.comboBox_obj2.Size = new System.Drawing.Size(187, 21);
             this.comboBox_obj2.TabIndex = 0;
+            this.comboBox_obj2.Tag = "Obj2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "с";
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.numericUpDown_obj1_end);
+            this.groupBox3.Controls.Add(this.numericUpDown_obj1_start);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.comboBox_obj1_end);
-            this.groupBox3.Controls.Add(this.comboBox_obj1_begin);
             this.groupBox3.Controls.Add(this.comboBox_obj1);
             this.groupBox3.Location = new System.Drawing.Point(6, 20);
             this.groupBox3.Name = "groupBox3";
@@ -217,68 +240,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "с";
             // 
-            // comboBox_obj1_begin
-            // 
-            this.comboBox_obj1_begin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_obj1_begin.FormattingEnabled = true;
-            this.comboBox_obj1_begin.Location = new System.Drawing.Point(31, 45);
-            this.comboBox_obj1_begin.Name = "comboBox_obj1_begin";
-            this.comboBox_obj1_begin.Size = new System.Drawing.Size(54, 21);
-            this.comboBox_obj1_begin.TabIndex = 0;
-            // 
             // comboBox_obj1
             // 
+            this.comboBox_obj1.DisplayMember = "(нет)";
             this.comboBox_obj1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_obj1.FormattingEnabled = true;
             this.comboBox_obj1.Location = new System.Drawing.Point(7, 20);
             this.comboBox_obj1.Name = "comboBox_obj1";
             this.comboBox_obj1.Size = new System.Drawing.Size(173, 21);
             this.comboBox_obj1.TabIndex = 0;
-            // 
-            // comboBox_obj1_end
-            // 
-            this.comboBox_obj1_end.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_obj1_end.FormattingEnabled = true;
-            this.comboBox_obj1_end.Location = new System.Drawing.Point(126, 45);
-            this.comboBox_obj1_end.Name = "comboBox_obj1_end";
-            this.comboBox_obj1_end.Size = new System.Drawing.Size(54, 21);
-            this.comboBox_obj1_end.TabIndex = 0;
-            // 
-            // comboBox_obj2_begin
-            // 
-            this.comboBox_obj2_begin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_obj2_begin.FormattingEnabled = true;
-            this.comboBox_obj2_begin.Location = new System.Drawing.Point(34, 45);
-            this.comboBox_obj2_begin.Name = "comboBox_obj2_begin";
-            this.comboBox_obj2_begin.Size = new System.Drawing.Size(54, 21);
-            this.comboBox_obj2_begin.TabIndex = 0;
-            // 
-            // comboBox_obj2_end
-            // 
-            this.comboBox_obj2_end.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_obj2_end.FormattingEnabled = true;
-            this.comboBox_obj2_end.Location = new System.Drawing.Point(137, 45);
-            this.comboBox_obj2_end.Name = "comboBox_obj2_end";
-            this.comboBox_obj2_end.Size = new System.Drawing.Size(54, 21);
-            this.comboBox_obj2_end.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 48);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "с";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(103, 48);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(19, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "по";
+            this.comboBox_obj1.Tag = "Obj1";
+            this.comboBox_obj1.SelectedIndexChanged += new System.EventHandler(this.comboBox_obj_SelectedIndexChanged);
             // 
             // button_in_PicBox
             // 
@@ -310,6 +282,78 @@
             this.button1.Text = "Экспорт в Excel";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // numericUpDown_obj1_start
+            // 
+            this.numericUpDown_obj1_start.Location = new System.Drawing.Point(26, 46);
+            this.numericUpDown_obj1_start.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_obj1_start.Name = "numericUpDown_obj1_start";
+            this.numericUpDown_obj1_start.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDown_obj1_start.TabIndex = 2;
+            this.numericUpDown_obj1_start.Tag = "Obj1";
+            this.numericUpDown_obj1_start.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_obj1_end
+            // 
+            this.numericUpDown_obj1_end.Location = new System.Drawing.Point(117, 46);
+            this.numericUpDown_obj1_end.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_obj1_end.Name = "numericUpDown_obj1_end";
+            this.numericUpDown_obj1_end.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDown_obj1_end.TabIndex = 2;
+            this.numericUpDown_obj1_end.Tag = "Obj1";
+            this.numericUpDown_obj1_end.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_obj2_start
+            // 
+            this.numericUpDown_obj2_start.Location = new System.Drawing.Point(25, 48);
+            this.numericUpDown_obj2_start.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_obj2_start.Name = "numericUpDown_obj2_start";
+            this.numericUpDown_obj2_start.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDown_obj2_start.TabIndex = 2;
+            this.numericUpDown_obj2_start.Tag = "Obj2";
+            this.numericUpDown_obj2_start.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_obj2_end
+            // 
+            this.numericUpDown_obj2_end.Location = new System.Drawing.Point(128, 48);
+            this.numericUpDown_obj2_end.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_obj2_end.Name = "numericUpDown_obj2_end";
+            this.numericUpDown_obj2_end.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDown_obj2_end.TabIndex = 2;
+            this.numericUpDown_obj2_end.Tag = "Obj2";
+            this.numericUpDown_obj2_end.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,6 +379,10 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_obj1_start)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_obj1_end)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_obj2_start)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_obj2_end)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,15 +405,15 @@
         private System.Windows.Forms.ComboBox comboBox_obj1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox_obj1_begin;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox_obj2_end;
-        private System.Windows.Forms.ComboBox comboBox_obj2_begin;
-        private System.Windows.Forms.ComboBox comboBox_obj1_end;
         private System.Windows.Forms.Button button_in_PicBox;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown numericUpDown_obj1_start;
+        private System.Windows.Forms.NumericUpDown numericUpDown_obj2_end;
+        private System.Windows.Forms.NumericUpDown numericUpDown_obj2_start;
+        private System.Windows.Forms.NumericUpDown numericUpDown_obj1_end;
     }
 }
 

@@ -11,11 +11,11 @@ namespace WindowsFormsApp1
 {
     class ObjectTracking
     {
-        List<double> X = new List<double>(); // координаты X
-        List<double> Y = new List<double>(); // координаты Y
-        double[,] Vector = new double[1, 51]; // Вектор
-        double[,] Vivlet = new double[64, 51]; // Вивлет
-        object result = null; // создание object для вывода вивлета
+        private List<double> X = new List<double>(); // координаты X
+        private List<double> Y = new List<double>(); // координаты Y
+        private double[,] Vector = new double[1, 51]; // Вектор
+        private double[,] Vivlet = new double[64, 51]; // Вивлет
+        private object result = null; // создание object для вывода вивлета
         public ObjectTracking(List<double> X, List<double> Y) { // базовый конструктор
             this.X = X; // задача листов X
             this.Y = Y; // задача листов Y

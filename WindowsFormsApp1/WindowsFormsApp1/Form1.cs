@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+/*using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks;*/
 using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
@@ -19,12 +19,19 @@ namespace WindowsFormsApp1
             InitializeComponent();
             
         }
+
         List<ObjectTracking> ListObject = new List<ObjectTracking>(); // лист объектов получаемых из файла
         List<double> X = new List<double>(); // временный лист X
         List<double> Y = new List<double>(); // временный лист Y
-
+        string pathStoreData = "../../data";
+        
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            DirectoryInfo storeData = new DirectoryInfo(pathStoreData);
+            int countFiles = storeData.GetFiles().Length; // количество подключаемых файлов
+            List<ObjectTracking>[] ArrayListObject = new List<ObjectTracking>[countFiles]; // массив листов объектов
+
             if (File.Exists("myfunc.m")) { // если файл существует
                 File.Delete("myfunc.m"); // то удаляем его 
             }
@@ -32,7 +39,53 @@ namespace WindowsFormsApp1
                 myfunc.WriteLine("function[W] = myfunc(vector)"); // записываем строчки 
                 myfunc.WriteLine("W=cwt(vector,1:64,'sym2');");// записываем строчки 
                 myfunc.Close();// закрываем файл
-            StreamReader f1 = new StreamReader("../../sourse/Машина.txt",true); // подключение файлов с объектами
+            int countObj = 0;
+            for (int i = 0; i < countFiles; i++)
+            {
+                string nameFile = storeData.GetFiles().GetValue(i).ToString();
+                StreamReader fileStoreData = new StreamReader(pathStoreData + "/" + nameFile,true);
+                comboBox_obj1.Items.Add(nameFile);
+                comboBox_obj2.Items.Add(nameFile);
+                countObj = -1;
+                ArrayListObject[i] = new List<ObjectTracking>();
+                while (!fileStoreData.EndOfStream)
+                {
+                    string line = fileStoreData.ReadLine(); // читаем строку
+                    if (line != "") // Если строчка не пуста
+                    {
+                        if (line[0] == '#') // если строка начинается с шарпа создаем объект
+                        {
+                            countObj++; //добавляем
+                        }
+                        else // если находимся на координатах
+                        {
+                            string[] XY = line.Split(' '); // делим строку на X и Y
+                            X.Add(Convert.ToDouble(XY[0])); // Создаем временный лист всех X
+                            Y.Add(Convert.ToDouble(XY[1])); // Создаем временный лист всех Y
+                        }
+                    }
+                    else
+                    { // если строчка пуста, пора закончить работать с объектом
+                        ObjectTracking objectTracking = new ObjectTracking(X, Y); // Создаем экземпляр объекта из временных X,Y
+                        
+                        ArrayListObject[i].Add(objectTracking);
+                        // ListObject.Add(objectTracking);// добавляем объект в лист
+                        objectTracking = null;
+                        X.Clear(); // Обнуление X
+                        Y.Clear(); // Обнулиние Y
+                    }
+                }
+
+                fileStoreData.Close();
+            }
+            countObj = 0;
+            foreach (var List in ArrayListObject) {
+                countObj += List.Count;
+            }
+            labelTest.Text = "Количество объектов: " + countObj; // Вывод количества объектов
+
+            /*
+            StreamReader f1 = new StreamReader("../../date/Машина.txt",true); // подключение файлов с объектами
             int count = -1; // счетчик объектов, счет с нуля, их нет, поэтому -1
             while (!f1.EndOfStream)
             { // пока файл не закончится читаться
@@ -59,13 +112,13 @@ namespace WindowsFormsApp1
             }
             labelTest.Text = "Количество объектов: "+ ++count; // Вывод количества объектов
             f1.Close(); // закрываем файл
-            
+            */
 
-            
-           
+
+
 
             //  ТЕСТОВЫЕ ДАННЫЕ
-            
+
 
             /*
             object result = null;
@@ -77,6 +130,11 @@ namespace WindowsFormsApp1
             object im = res.GetValue(0);
             var vivlet = new double[64,51];
             vivlet = (double[,])im;*/
+        }
+
+        private void comboBox_obj_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // numericUpDown_obj1_start.Maximum
         }
     }
 }
