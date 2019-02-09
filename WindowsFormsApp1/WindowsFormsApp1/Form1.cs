@@ -24,13 +24,13 @@ namespace WindowsFormsApp1
         List<double> X = new List<double>(); // временный лист X
         List<double> Y = new List<double>(); // временный лист Y
         string pathStoreData = "../../data";
-        
+        List<ObjectTracking>[] ArrayListObject;
         private void Form1_Load(object sender, EventArgs e)
         {
 
             DirectoryInfo storeData = new DirectoryInfo(pathStoreData);
             int countFiles = storeData.GetFiles().Length; // количество подключаемых файлов
-            List<ObjectTracking>[] ArrayListObject = new List<ObjectTracking>[countFiles]; // массив листов объектов
+            ArrayListObject = new List<ObjectTracking>[countFiles]; // массив листов объектов
 
             if (File.Exists("myfunc.m")) { // если файл существует
                 File.Delete("myfunc.m"); // то удаляем его 
@@ -78,6 +78,8 @@ namespace WindowsFormsApp1
 
                 fileStoreData.Close();
             }
+            comboBox_obj1.SelectedIndex = 0;
+            comboBox_obj2.SelectedIndex = 0;
             countObj = 0;
             foreach (var List in ArrayListObject) {
                 countObj += List.Count;
@@ -131,10 +133,14 @@ namespace WindowsFormsApp1
             var vivlet = new double[64,51];
             vivlet = (double[,])im;*/
         }
-
         private void comboBox_obj_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // numericUpDown_obj1_start.Maximum
+            ComboBox combo = sender as ComboBox; // получаем изменяемый комбобокс
+            int SelectFileIndex = combo.SelectedIndex; // получаем индекс выбранного файла
+            int MaxValue = ArrayListObject[SelectFileIndex].Count;
+            // combo.Parent.Controls.Find()
+            numericUpDown_obj1_start.Maximum = MaxValue;
+            numericUpDown_obj1_end.Maximum = MaxValue;
         }
     }
 }
