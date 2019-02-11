@@ -197,6 +197,7 @@
             0,
             0,
             0});
+            this.numericUpDown_obj2_end.ValueChanged += new System.EventHandler(this.numericUpDown_obj_end_ValueChanged);
             // 
             // label4
             // 
@@ -224,6 +225,7 @@
             0,
             0,
             0});
+            this.numericUpDown_obj2_start.ValueChanged += new System.EventHandler(this.numericUpDown_obj_start_ValueChanged);
             // 
             // comboBox_obj2
             // 
@@ -276,6 +278,7 @@
             0,
             0,
             0});
+            this.numericUpDown_obj1_end.ValueChanged += new System.EventHandler(this.numericUpDown_obj_end_ValueChanged);
             // 
             // numericUpDown_obj1_start
             // 
@@ -294,6 +297,7 @@
             0,
             0,
             0});
+            this.numericUpDown_obj1_start.ValueChanged += new System.EventHandler(this.numericUpDown_obj_start_ValueChanged);
             // 
             // label2
             // 

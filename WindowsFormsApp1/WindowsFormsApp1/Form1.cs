@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;*/
 using System.Windows.Forms;
 using System.IO;
-using System.Reflection;
+using Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApp1
 {
@@ -138,9 +138,53 @@ namespace WindowsFormsApp1
             ComboBox combo = sender as ComboBox; // получаем изменяемый комбобокс
             int SelectFileIndex = combo.SelectedIndex; // получаем индекс выбранного файла
             int MaxValue = ArrayListObject[SelectFileIndex].Count;
-            // combo.Parent.Controls.Find()
+            foreach (object item in combo.Parent.Controls)
+            {
+                
+                if (item.GetType().Name.ToString() == "NumericUpDown") {
+                    NumericUpDown numericUpDown = item as NumericUpDown;
+                    numericUpDown.Maximum = MaxValue;
+                }
+            }
             numericUpDown_obj1_start.Maximum = MaxValue;
             numericUpDown_obj1_end.Maximum = MaxValue;
+        }
+
+        private void numericUpDown_obj_start_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            int MinValue = (int)numericUpDown.Value;
+            foreach (object item in numericUpDown.Parent.Controls)
+            {
+                
+                if (item.GetType().Name.ToString() == "NumericUpDown")
+                {
+                    
+                    if (item != sender) {
+                        NumericUpDown numericUpDownChange = item as NumericUpDown;
+                        numericUpDownChange.Minimum = MinValue;
+                    }
+                }
+            }
+        }
+
+        private void numericUpDown_obj_end_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            int MaxValue = (int)numericUpDown.Value;
+            foreach (object item in numericUpDown.Parent.Controls)
+            {
+
+                if (item.GetType().Name.ToString() == "NumericUpDown")
+                {
+
+                    if (item != sender)
+                    {
+                        NumericUpDown numericUpDownChange = item as NumericUpDown;
+                        numericUpDownChange.Maximum = MaxValue;
+                    }
+                }
+            }
         }
     }
 }
