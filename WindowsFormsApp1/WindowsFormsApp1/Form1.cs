@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 /*using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;*/
 using System.Windows.Forms;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Drawing;
 
 namespace WindowsFormsApp1
 {
@@ -146,10 +146,50 @@ namespace WindowsFormsApp1
             Excel.Workbook workbook;
             Excel.Worksheet worksheet;
             workbook = excelApp.Workbooks.Add();
-            worksheet = (Excel.Worksheet)workbook.Worksheets.get_Item(1);
+            int countItemEcxel = 0;
+            //int minValueObj1 = (int)numericUpDown_obj1_start.Value;
+            int maxValueObj1 = (int)numericUpDown_obj1_end.Value;
+            // int minValueObj2 = (int)numericUpDown_obj2_start.Value;
+            int maxValueObj2 = (int)numericUpDown_obj2_end.Value;
+
+            excelApp.Visible = true;
+            excelApp.UserControl = true;
+            // int indexArrayObj1 = comboBox_obj1.SelectedIndex;
+            // int indexArrayObj2 = comboBox_obj2.SelectedIndex;
+            for (int ValueObj1 = (int)numericUpDown_obj1_start.Value - 1; ValueObj1 < maxValueObj1 - 1; ValueObj1++)
+            {
+                for (int ValueObj2 = (int)numericUpDown_obj2_start.Value - 1; ValueObj2 < maxValueObj2 - 1; ValueObj2++)
+                {
+                    countItemEcxel++;
+
+                    // worksheet = (Excel.Worksheet)workbook.Worksheets.Add();
+                    workbook.Worksheets.Add();
+                    worksheet = (Excel.Worksheet)workbook.Worksheets.get_Item(1);
+                    int CountObj1 = ValueObj1 + 1;
+                    int CountObj2 = ValueObj2 + 1;
+                    worksheet.Name = "obj1_№" + CountObj1 + " vs obj2_№" + CountObj2;
+                    // worksheet.Range["AY64"].
+                    for (int i = 0; i < 51; i++)
+                    {
+                        for (int j = 0; j < 64; j++)
+                        {
+                            // worksheet.Cells[j + 1, i + 1] = ArrayListObject[1][1].GetVevlet - ArrayListObject[0][1];
+                            worksheet.Cells[j + 1, i + 1] = Math.Abs(ArrayListObject[comboBox_obj1.SelectedIndex][ValueObj1].vivlet[j, i] - ArrayListObject[comboBox_obj2.SelectedIndex][ValueObj2].vivlet[j, i]);
+                        }
+                    }
+                }
+            }
+            /*workbook.Worksheets.Add();
+            workbook.Worksheets.Add();
+            workbook.Worksheets.Add();*/
+
+
+
             /*for (int i = 0; i < 51; i++) {
                 for (int j = 0; j < 64; j++){
-                    worksheet.Cells[j + 1, i + 1] = ArrayListObject[1][1].GetVevlet - ArrayListObject[0][1];
+                    // worksheet.Cells[j + 1, i + 1] = ArrayListObject[1][1].GetVevlet - ArrayListObject[0][1];
+                    worksheet = (Excel.Worksheet)workbook.Worksheets.get_Item(2);
+                    worksheet.Cells[j + 1, i + 1] = ArrayListObject[1][1].vivlet[j,i] - ArrayListObject[0][1].vivlet[j,i];
                 }
             }*/
         }

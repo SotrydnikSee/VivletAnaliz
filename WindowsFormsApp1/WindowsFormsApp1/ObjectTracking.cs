@@ -21,19 +21,20 @@ namespace WindowsFormsApp1
             this.Y = new List<double>(Y); // задача листов Y
             for (int i = 0; i < 51; i++) // считаем вектор 1х51
             {
-                Vector[0, i] = Math.Sqrt(Math.Pow((X[i+1] - X[i]),2)+Math.Pow((Y[i + 1] - Y[i]), 2));
+                Vector[0, i] = Math.Sqrt(Math.Pow((X[i + 1] - X[i]), 2) + Math.Pow((Y[i + 1] - Y[i]), 2));
             }
 
             MLApp.MLApp matlab = new MLApp.MLApp(); // подключаем библиотеку матлаб
-            string path ="cd " + Directory.GetCurrentDirectory(); // получаем директорию в которой находися программа
+            string path = "cd " + Directory.GetCurrentDirectory(); // получаем директорию в которой находися программа
             matlab.Execute(path); // находим в папке функции
             matlab.Feval("myfunc", 1, out result, Vector); // запускает функцию матлаб
             GetVevlet(result); // получаем вивлет
         }
-        public void GetVevlet(object result) { // функция получения вивлета
+        private void GetVevlet(object result) { // функция получения вивлета
             var res = (result as object[]).Select(x => (double[,])x).ToArray(); // хз
             object im = res.GetValue(0); // хз
             Vivlet = (double[,])im; // хз
         }
+        public double[,] vivlet{ get { return Vivlet; } }
     }
 }
