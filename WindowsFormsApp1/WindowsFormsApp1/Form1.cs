@@ -99,8 +99,6 @@ namespace WindowsFormsApp1
                     numericUpDown.Maximum = MaxValue;
                 }
             }
-            numericUpDown_obj1_start.Maximum = MaxValue;
-            numericUpDown_obj1_end.Maximum = MaxValue;
         }
 
         private void numericUpDown_obj_start_ValueChanged(object sender, EventArgs e)
@@ -156,9 +154,9 @@ namespace WindowsFormsApp1
             excelApp.UserControl = true;
             // int indexArrayObj1 = comboBox_obj1.SelectedIndex;
             // int indexArrayObj2 = comboBox_obj2.SelectedIndex;
-            for (int ValueObj1 = (int)numericUpDown_obj1_start.Value - 1; ValueObj1 < maxValueObj1 - 1; ValueObj1++)
+            for (int ValueObj1 = (int)numericUpDown_obj1_start.Value - 1; ValueObj1 < maxValueObj1; ValueObj1++)
             {
-                for (int ValueObj2 = (int)numericUpDown_obj2_start.Value - 1; ValueObj2 < maxValueObj2 - 1; ValueObj2++)
+                for (int ValueObj2 = (int)numericUpDown_obj2_start.Value - 1; ValueObj2 < maxValueObj2; ValueObj2++)
                 {
                     countItemEcxel++;
 
@@ -173,8 +171,9 @@ namespace WindowsFormsApp1
                     {
                         for (int j = 0; j < 64; j++)
                         {
-                            // worksheet.Cells[j + 1, i + 1] = ArrayListObject[1][1].GetVevlet - ArrayListObject[0][1];
-                            worksheet.Cells[j + 1, i + 1] = Math.Abs(ArrayListObject[comboBox_obj1.SelectedIndex][ValueObj1].vivlet[j, i] - ArrayListObject[comboBox_obj2.SelectedIndex][ValueObj2].vivlet[j, i]);
+                            double result = Math.Abs(ArrayListObject[comboBox_obj1.SelectedIndex][ValueObj1].vivlet[j, i] - ArrayListObject[comboBox_obj2.SelectedIndex][ValueObj2].vivlet[j, i]);
+                            worksheet.Cells[j + 1, i + 1] = result;
+                            // if(result)
                         }
                     }
                 }
@@ -184,14 +183,21 @@ namespace WindowsFormsApp1
             workbook.Worksheets.Add();*/
 
 
-
-            /*for (int i = 0; i < 51; i++) {
+            /*workbook.Worksheets.Add();
+            worksheet = (Excel.Worksheet)workbook.Worksheets.get_Item(1);
+            for (int i = 0; i < 51; i++) {
                 for (int j = 0; j < 64; j++){
                     // worksheet.Cells[j + 1, i + 1] = ArrayListObject[1][1].GetVevlet - ArrayListObject[0][1];
-                    worksheet = (Excel.Worksheet)workbook.Worksheets.get_Item(2);
-                    worksheet.Cells[j + 1, i + 1] = ArrayListObject[1][1].vivlet[j,i] - ArrayListObject[0][1].vivlet[j,i];
+                    
+                    worksheet.Cells[j + 1, i + 1] = ArrayListObject[1][1].vivlet[j, i] - ArrayListObject[0][1].vivlet[j, i];
+                    (worksheet.Cells[j + 1, i + 1] as Excel.Range).Interior.Color = Excel.XlRgbColor.rgbGreen;
+                    //worksheet.Cells.Font.Color = Color.Red;
                 }
             }*/
+            // Excel.Range range = worksheet.Range["A1", "AY64"].FormatConditions.Add(Excel.XlFormatConditionType.xlCellValue, Excel.XlFormatConditionOperator.xlBetween, Formula1: "=0,2", Formula2: "=0,4");
+            // range.Font.Color = Excel.XlRgbColor.rgbGreen;
+            // Excel.FormatCondition format =
+            // worksheet.Range["AY64"].Font.Color = Color.Red;
         }
     }
 }
