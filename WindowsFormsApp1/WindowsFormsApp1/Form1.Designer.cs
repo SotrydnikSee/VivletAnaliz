@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelTest = new System.Windows.Forms.Label();
-            this.pictureBoxTest = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_addFile = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -54,7 +53,6 @@
             this.button_in_PicBox = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTest)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -71,19 +69,11 @@
             // labelTest
             // 
             this.labelTest.AutoSize = true;
-            this.labelTest.Location = new System.Drawing.Point(643, 197);
+            this.labelTest.Location = new System.Drawing.Point(15, 339);
             this.labelTest.Name = "labelTest";
             this.labelTest.Size = new System.Drawing.Size(35, 13);
             this.labelTest.TabIndex = 1;
             this.labelTest.Text = "label1";
-            // 
-            // pictureBoxTest
-            // 
-            this.pictureBoxTest.Location = new System.Drawing.Point(643, 82);
-            this.pictureBoxTest.Name = "pictureBoxTest";
-            this.pictureBoxTest.Size = new System.Drawing.Size(136, 108);
-            this.pictureBoxTest.TabIndex = 0;
-            this.pictureBoxTest.TabStop = false;
             // 
             // toolStrip1
             // 
@@ -91,7 +81,7 @@
             this.toolStripButton_addFile});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(426, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -364,17 +354,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(426, 367);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.labelTest);
-            this.Controls.Add(this.pictureBoxTest);
             this.Controls.Add(this.groupBox5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTest)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -396,7 +384,6 @@
 
         #endregion
         private System.Windows.Forms.Label labelTest;
-        private System.Windows.Forms.PictureBox pictureBoxTest;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton_addFile;
         private System.Windows.Forms.DataGridView dataGridView1;

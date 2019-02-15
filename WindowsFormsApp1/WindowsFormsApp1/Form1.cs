@@ -151,7 +151,7 @@ namespace WindowsFormsApp1
             int maxValueObj2 = (int)numericUpDown_obj2_end.Value;
 
             excelApp.Visible = true;
-            excelApp.UserControl = true;
+            
             // int indexArrayObj1 = comboBox_obj1.SelectedIndex;
             // int indexArrayObj2 = comboBox_obj2.SelectedIndex;
             for (int ValueObj1 = (int)numericUpDown_obj1_start.Value - 1; ValueObj1 < maxValueObj1; ValueObj1++)
@@ -173,11 +173,19 @@ namespace WindowsFormsApp1
                         {
                             double result = Math.Abs(ArrayListObject[comboBox_obj1.SelectedIndex][ValueObj1].vivlet[j, i] - ArrayListObject[comboBox_obj2.SelectedIndex][ValueObj2].vivlet[j, i]);
                             worksheet.Cells[j + 1, i + 1] = result;
-                            // if(result)
+                            (worksheet.Cells[j + 1, i + 1] as Excel.Range).Interior.Color = Excel.XlRgbColor.rgbGreen;
+                            if (result > 0.1)
+                                (worksheet.Cells[j + 1, i + 1] as Excel.Range).Interior.Color = Excel.XlRgbColor.rgbGreen;
+                            if (result > 0.3)
+                                (worksheet.Cells[j + 1, i + 1] as Excel.Range).Interior.Color = Excel.XlRgbColor.rgbYellow;
+                            if (result > 0.5)
+                                (worksheet.Cells[j + 1, i + 1] as Excel.Range).Interior.Color = Excel.XlRgbColor.rgbRed;
+
                         }
                     }
                 }
             }
+            excelApp.UserControl = true;
             /*workbook.Worksheets.Add();
             workbook.Worksheets.Add();
             workbook.Worksheets.Add();*/
