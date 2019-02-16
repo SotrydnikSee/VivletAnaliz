@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
             this.Y = new List<double>(Y); // задача листов Y
             for (int i = 0; i < 51; i++) // считаем вектор 1х51
             {
-                Vector[0, i] = Math.Sqrt(Math.Pow((X[i + 1] - X[i]), 2) + Math.Pow((Y[i + 1] - Y[i]), 2));
+                Vector[0, i] = Math.Sqrt(Math.Pow((X[i + 1] - X[i]), 2) + Math.Pow((Y[i + 1] - Y[i]), 2)); // формула полученная из МатЛаба
             }
 
             MLApp.MLApp matlab = new MLApp.MLApp(); // подключаем библиотеку матлаб
@@ -35,6 +35,6 @@ namespace WindowsFormsApp1
             object im = res.GetValue(0); // хз
             Vivlet = (double[,])im; // хз
         }
-        public double[,] vivlet{ get { return Vivlet; } }
+        public double[,] vivlet{ get { return Vivlet; } } // свойство для получения результата вивлема
     }
 }
